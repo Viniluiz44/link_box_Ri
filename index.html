@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus links - Radar Investidor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="loading-screen">
+        <div id="loading-bar"></div>
+        <div id="loading-text">0%</div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="widget1">
+                <div class="info-user">
+                    <div class="img-user">
+                        <img src="img/channels4_profile.jpg" alt="user">
+                    </div>
+                    <div class="name-user">
+                        <h1>Radar Investidor</h1>
+                        <span>Investindo inteligente</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="widget2">
+                <div class="hard-skills">
+                    <span class="destaque">Veja meu ultimo video</video></span>
+                    <div class="skills-icons">
+                        <iframe id="last-video" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>                    
+                </div>
+            </div>
+            <div class="widget3">
+                <a href="https://www.youtube.com/@RadarinvestidoR/videos" target="_blank" class="tread">
+                    <div class="text-tread">
+                        <h1>Meu canal</h1>
+                        <span>@RadarinvestidoR</span>
+                    </div>
+                    <div class="img-tread"></div>
+                </a>
+                <div class="redes-sociais">
+                    <a class="box-social instagram" href="https://www.instagram.com/"><i
+                            class="fab fa-instagram"></i></a>
+                            <a class="box-social youtube" href="https://www.youtube.com/@RadarinvestidoR/videos"><i class="fab fa-youtube"></i></a>
+                    <a class="box-social linkedin" href="https://www.linkedin.com/"><i
+                            class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="widget4">
+                <a href="" class="meu-site" target="_blank">
+                    <img src="img/web-black-icon.png" alt="web">
+                    <h1>Meu link box</h1>
+                </a>
+            </div>
+            <div class="widget5">
+                <a href="https://www.google.com" class="freelancer" target="_blank">
+                    <img src="img/web-white-icon.png" alt="web">
+                    <h1>Planilha de Sucesso</h1>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="animationLoading.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        // Função para carregar o último vídeo do canal
+        function loadLastVideo() {
+            var channelName = 'RadarinvestidoR'; // Nome do canal
+            var apiKey = 'SUA_API_KEY'; // Substitua pela sua API key do YouTube
+            
+            // URL da API para buscar vídeos do canal
+            var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' + channelName + '&maxResults=1&type=video&key=' + apiKey;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var videoId = data.items[0].id.videoId;
+                    var videoUrl = 'https://www.youtube.com/embed/' + videoId;
+                    document.getElementById('last-video').src = videoUrl;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    
+        // Chame a função quando a página carregar
+        window.onload = loadLastVideo;
+    </script>
+    
+
+</body>
+
+</html>
